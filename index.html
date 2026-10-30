@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Achmad Rehan Wijaya Putra | Portfolio</title>
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-alt: #111111;
+      --card: #161616;
+      --border: #2a2a2a;
+      --text: #f5f5f5;
+      --muted: #a3a3a3;
+      --white: #ffffff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ---------- NAVBAR ---------- */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo { font-weight: 800; letter-spacing: 2px; font-size: 1.1rem; }
+
+    nav ul { list-style: none; display: flex; gap: 28px; }
+
+    nav ul a {
+      color: var(--muted);
+      font-size: 0.92rem;
+      transition: color 0.2s;
+    }
+    nav ul a:hover { color: var(--white); }
+
+    /* ---------- SECTIONS ---------- */
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 110px 24px 60px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 36px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ---------- ABOUT ---------- */
+    .about {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .photo-wrap {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--card);
+    }
+
+    .photo-wrap img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      filter: grayscale(100%) contrast(1.05);
+      transition: filter 0.4s;
+    }
+    .photo-wrap:hover img { filter: grayscale(0%); }
+
+    .about-desc { color: var(--muted); font-size: 1.05rem; margin-bottom: 28px; }
+
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .info-table tr { border-bottom: 1px solid var(--border); }
+    .info-table tr:last-child { border-bottom: none; }
+    .info-table td { padding: 14px 18px; vertical-align: top; }
+    .info-table td:first-child {
+      width: 140px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      background: var(--bg-alt);
+    }
+    .info-table td:last-child { font-weight: 600; }
+
+    /* ---------- SKILLS ---------- */
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .skill-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      transition: transform 0.25s, background 0.25s, color 0.25s;
+    }
+    .skill-card:hover {
+      transform: translateY(-6px);
+      background: var(--white);
+      color: #000;
+    }
+    .skill-card:hover p { color: #444; }
+    .skill-card .num {
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      opacity: 0.6;
+    }
+    .skill-card h3 { margin: 10px 0 8px; font-size: 1.25rem; }
+    .skill-card p { color: var(--muted); font-size: 0.95rem; }
+
+    /* ---------- ACHIEVEMENT ---------- */
+    .achievement-list { display: flex; flex-direction: column; gap: 20px; }
+
+    .achievement {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--white);
+      border-radius: 12px;
+      padding: 24px 28px;
+    }
+    .achievement h3 { font-size: 1.2rem; margin-bottom: 6px; }
+    .achievement .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .badge {
+      font-size: 0.8rem;
+      padding: 3px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--muted);
+    }
+    .achievement p { color: var(--muted); }
+
+    /* ---------- CONTACT ---------- */
+    .contact-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .contact-card {
+      display: block;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 26px;
+      transition: all 0.25s;
+    }
+    .contact-card:hover {
+      background: var(--white);
+      color: #000;
+      transform: translateY(-4px);
+    }
+    .contact-card:hover span { color: #555; }
+    .contact-card span {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .contact-card strong { font-size: 1.05rem; word-break: break-all; }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 800px) {
+      .about { grid-template-columns: 1fr; }
+      .photo-wrap { max-width: 280px; margin: 0 auto; }
+      nav ul { gap: 16px; }
+      nav ul a { font-size: 0.82rem; }
+      .logo { display: none; }
+      nav { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <nav>
+      <div class="logo">REHAN.</div>
+      <ul>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#skills">What I Can Do</a></li>
+        <li><a href="#achievement">Achievement</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ABOUT ME -->
+  <section id="about">
+    <h2 class="section-title">About Me</h2>
+    <div class="about">
+      <div class="photo-wrap">
+        <!-- Letakkan file foto Anda di folder yang sama dengan index.html, lalu beri nama foto.jpg -->
+        <img src="foto.jpg" alt="Foto Achmad Rehan Wijaya Putra">
+      </div>
+
+      <div>
+        <p class="about-desc">
+          Aku adalah seorang pelajar di Teknik Informatika UNESA yang baru memulai perjalanan di tahun 2026 ini.
+          Aku menyukai untuk mencoba hal baru yang dapat mengembangkan skill-ku untuk masa depan mendatang.
+        </p>
+
+        <table class="info-table">
+          <tr><td>Nama</td><td>Achmad Rehan Wijaya Putra</td></tr>
+          <tr><td>NIM</td><td>26051204016</td></tr>
+          <tr><td>Prodi</td><td>S1 Teknik Informatika</td></tr>
+          <tr><td>Pendidikan</td><td>Mahasiswa</td></tr>
+          <tr><td>Aktivitas</td><td>Fokus belajar mengejar nilai</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT I CAN DO -->
+  <section id="skills">
+    <h2 class="section-title">What I Can Do</h2>
+    <div class="skills">
+      <div class="skill-card">
+        <div class="num">01</div>
+        <h3>Problem Solving</h3>
+        <p>Mampu menganalisis masalah dan mencari solusi yang tepat secara terstruktur.</p>
+      </div>
+      <div class="skill-card">
+        <div class="num">02</div>
+        <h3>Basic Digital Skill</h3>
+        <p>Menguasai dasar penggunaan perangkat dan aplikasi digital, termasuk Microsoft Office.</p>
+      </div>
+      <div class="skill-card">
+        <div class="num">03</div>
+        <h3>Data Management</h3>
+        <p>Mengelola, merapikan, dan mengorganisasi data agar mudah digunakan.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENT -->
+  <section id="achievement">
+    <h2 class="section-title">Achievement</h2>
+    <div class="achievement-list">
+      <article class="achievement">
+        <h3>Siswa Terverifikasi Gemini</h3>
+        <div class="meta">
+          <span class="badge">2026</span>
+          <span class="badge">Google for Education</span>
+        </div>
+        <p>Diberikan karena menunjukkan pengetahuan, keterampilan, dan kompetensi dasar dalam menggunakan AI Google di lingkungan pendidikan.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-list">
+      <a class="contact-card" href="mailto:kunzrehan@gmail.com">
+        <span>Email</span>
+        <strong>kunzrehan@gmail.com</strong>
+      </a>
+      <a class="contact-card" href="https://github.com/AchmadRehanWP" target="_blank" rel="noopener">
+        <span>GitHub</span>
+        <strong>AchmadRehanWP</strong>
+      </a>
+      <!-- Letakkan file CV di folder yang sama dengan index.html, lalu beri nama cv.pdf -->
+      <a class="contact-card" href="cv.pdf" target="_blank" rel="noopener" download>
+        <span>CV</span>
+        <strong>Lihat / Unduh CV (PDF)</strong>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2026 Achmad Rehan Wijaya Putra. All rights reserved.
+  </footer>
+
+</body>
+</html>
